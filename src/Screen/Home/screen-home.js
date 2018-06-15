@@ -22,6 +22,10 @@ _onSearch = () => {
 _onMore = () => {
 
 }
+
+_btnClick = ()=>{
+
+}
 class ScreenHome extends Component {
     render() {
         let firstQuery = ""
@@ -30,6 +34,9 @@ class ScreenHome extends Component {
 
                 <Content>
                     <View style={{backgroundColor:'blue',height:60}}>
+
+                    </View>
+                    <View style={{height:200}}>
 
                     </View>
                     <View style={{ flex: 1, flexDirection: 'row', backgroundColor:'#FFF', marginLeft:30, marginRight:30,marginTop:10, borderRadius:5 }}>
