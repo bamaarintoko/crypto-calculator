@@ -7,6 +7,7 @@ import {
     View, FlatList, StatusBar
 } from 'react-native';
 import { Container, Content, Item, Input, Button } from "native-base"
+import Icon from 'react-native-vector-icons/FontAwesome';
 function mapStateToProps(state) {
     return {
 
@@ -26,6 +27,12 @@ _onMore = () => {
 _btnClick = () => {
 
 }
+_onSetting = () => {
+    return () => {
+
+        console.log("setting")
+    }
+}
 class ScreenHome extends Component {
     render() {
         let firstQuery = ""
@@ -36,7 +43,10 @@ class ScreenHome extends Component {
                     barStyle="light-content"
                 />
                 <Content>
-                    <View style={{ backgroundColor: '#1565C0', height: 60 }}>
+                    <View style={{ backgroundColor: '#1565C0', height: 60, alignSelf: 'flex-end' }}>
+                        <Button transparent light style={{ padding: 15 }} onPress={_onSetting()}>
+                            <Icon name="cog" size={20} color="#FFF" />
+                        </Button>
 
                     </View>
                     <View style={{ height: 200 }}>
