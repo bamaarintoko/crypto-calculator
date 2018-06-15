@@ -6,7 +6,7 @@ import {
     Text,
     View, FlatList
 } from 'react-native';
-import { Toolbar, ToolbarBackAction, ToolbarContent, ToolbarAction } from 'react-native-paper';
+import {Container,Content} from "native-base"
 function mapStateToProps(state) {
     return {
 
@@ -24,18 +24,14 @@ _onMore = () => {
 }
 class ScreenHome extends Component {
     render() {
+        let firstQuery = ""
         return (
-            <Toolbar>
-                <ToolbarBackAction
-                    onPress={this._goBack}
-                />
-                <ToolbarContent
-                    title="Title"
-                    subtitle="Subtitle"
-                />
-                <ToolbarAction icon="search" onPress={this._onSearch} />
-                <ToolbarAction icon="more-vert" onPress={this._onMore} />
-            </Toolbar>
+            <Container>
+                
+                <Content>
+                    <Text>Haloooo</Text>
+                </Content>
+            </Container>
         );
     }
 }
