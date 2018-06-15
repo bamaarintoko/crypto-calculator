@@ -6,6 +6,7 @@ import {
     Text,
     View, FlatList, StatusBar
 } from 'react-native';
+import {withNavigation} from "react-navigation"
 import { Container, Content, Item, Input, Button } from "native-base"
 import Icon from 'react-native-vector-icons/FontAwesome';
 function mapStateToProps(state) {
@@ -14,26 +15,13 @@ function mapStateToProps(state) {
     };
 }
 
-_goBack = () => {
-
-}
-_onSearch = () => {
-
-}
-_onMore = () => {
-
-}
-
-_btnClick = () => {
-
-}
-_onSetting = () => {
-    return () => {
-
-        console.log("setting")
-    }
-}
 class ScreenHome extends Component {
+    _onSetting=()=>{
+        return ()=>{
+            this.props.navigation.navigate("Setting")
+            // console.log("-->",this.props)
+        }
+    }
     render() {
         let firstQuery = ""
         return (
@@ -44,7 +32,7 @@ class ScreenHome extends Component {
                 />
                 <Content>
                     <View style={{ backgroundColor: '#1565C0', height: 60, alignSelf: 'flex-end' }}>
-                        <Button transparent light style={{ padding: 15 }} onPress={_onSetting()}>
+                        <Button transparent light style={{ padding: 15 }} onPress={this._onSetting()}>
                             <Icon name="cog" size={20} color="#FFF" />
                         </Button>
 
@@ -84,7 +72,7 @@ class ScreenHome extends Component {
         );
     }
 }
-
+const screen = withNavigation(ScreenHome)
 export default connect(
     mapStateToProps,
-)(ScreenHome);
+)(screen);

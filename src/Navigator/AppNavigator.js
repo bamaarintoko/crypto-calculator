@@ -6,6 +6,7 @@ import { createStackNavigator } from "react-navigation";
 import { initializeListeners } from 'react-navigation-redux-helpers'
 import { navigationPropConstructor } from '../Utils/Redux'
 import ScreenHome from '../Screen/Home/screen-home'
+import ScreenSetting from '../Screen/Setting/screen-setting'
 
 import { connect } from "react-redux";
 import { addListener } from '../Utils/Redux';
@@ -13,6 +14,7 @@ import { addListener } from '../Utils/Redux';
 
 export const AppNavigator = createStackNavigator({
     Menu: { screen: ScreenHome },
+    Setting: { screen: ScreenSetting },
 
 }, {
     headerMode: 'none',
