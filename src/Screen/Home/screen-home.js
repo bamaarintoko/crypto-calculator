@@ -6,12 +6,12 @@ import {
     Text,
     View, FlatList, StatusBar
 } from 'react-native';
-import {withNavigation} from "react-navigation"
+import { withNavigation } from "react-navigation"
 import { Container, Content, Item, Input, Button } from "native-base"
 import Icon from 'react-native-vector-icons/FontAwesome';
 function mapStateToProps(state) {
     return {
-        redGetColor : state.redGetColor
+        redGetColor: state.redGetColor
     };
 }
 
@@ -19,29 +19,37 @@ class ScreenHome extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            initialRedGetColor : true,
-            color : '#1565C0'
+            initialRedGetColor: true,
+            color: '#1565C0'
         }
     }
-    
-    _onSetting=()=>{
-        return ()=>{
+
+    _onSetting = () => {
+        return () => {
             this.props.navigation.navigate("Setting")
             // console.log("-->",this.props)
         }
     }
+    componentDidMount() {
+        // console.log(this.props.redGetColor)
+        this.setState(
+            { color: this.props.redGetColor.data }
+        )
+    }
+
     componentDidUpdate(prevProps, prevState) {
-        if(this.props.redGetColor.status === prevState.initialRedGetColor){
+        if (this.props.redGetColor.status === prevState.initialRedGetColor) {
             this.setState({
-                color : this.props.redGetColor.data
+                color: this.props.redGetColor.data
             })
             this.props.dispatch({
-                type : 'GET_COLOR_RESET'
+                type: 'GET_COLOR_RESET',
+                data: this.props.redGetColor.data
             })
         }
         console.log(this.props.redGetColor)
     }
-    
+
     render() {
         let firstQuery = ""
         return (

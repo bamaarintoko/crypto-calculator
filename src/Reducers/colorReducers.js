@@ -14,7 +14,7 @@ export function redGetColor(state = initialGet, action) {
             return {
                 status : false,
                 status_get : false,
-                data : [],
+                data : action.data,
                 message : ""
             }
         default:

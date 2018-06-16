@@ -6,7 +6,7 @@ import { withNavigation } from "react-navigation"
 import Icon from 'react-native-vector-icons/FontAwesome';
 function mapStateToProps(state) {
     return {
-
+        redGetColor : state.redGetColor
     };
 }
 
@@ -28,6 +28,12 @@ class ScreenSetting extends Component {
                 message : "asdf"
             })
         }
+    }
+    componentDidMount() {
+        // console.log(this.props.redGetColor)
+        this.setState(
+            { color: this.props.redGetColor.data }
+        )
     }
     render() {
         return (
