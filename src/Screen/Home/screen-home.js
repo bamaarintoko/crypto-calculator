@@ -11,27 +11,47 @@ import { Container, Content, Item, Input, Button } from "native-base"
 import Icon from 'react-native-vector-icons/FontAwesome';
 function mapStateToProps(state) {
     return {
-
+        redGetColor : state.redGetColor
     };
 }
 
 class ScreenHome extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            initialRedGetColor : true,
+            color : '#1565C0'
+        }
+    }
+    
     _onSetting=()=>{
         return ()=>{
             this.props.navigation.navigate("Setting")
             // console.log("-->",this.props)
         }
     }
+    componentDidUpdate(prevProps, prevState) {
+        if(this.props.redGetColor.status === prevState.initialRedGetColor){
+            this.setState({
+                color : this.props.redGetColor.data
+            })
+            this.props.dispatch({
+                type : 'GET_COLOR_RESET'
+            })
+        }
+        console.log(this.props.redGetColor)
+    }
+    
     render() {
         let firstQuery = ""
         return (
-            <Container style={{ backgroundColor: '#1565C0' }}>
+            <Container style={{ backgroundColor: this.state.color }}>
                 <StatusBar
-                    backgroundColor="#1565C0"
+                    backgroundColor={this.state.color}
                     barStyle="light-content"
                 />
                 <Content>
-                    <View style={{ backgroundColor: '#1565C0', height: 60, alignSelf: 'flex-end' }}>
+                    <View style={{ backgroundColor: this.state.color, height: 60, alignSelf: 'flex-end' }}>
                         <Button transparent light style={{ padding: 15 }} onPress={this._onSetting()}>
                             <Icon name="cog" size={20} color="#FFF" />
                         </Button>

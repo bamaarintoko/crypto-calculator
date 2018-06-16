@@ -1,7 +1,7 @@
 import { initialGet } from "../Utils/initialState";
 
 export function redGetColor(state = initialGet, action) {
-    console.log(action.type)
+    // console.log(action.type)
     switch (action.type) {
         case 'GET_COLOR':
             return {
