@@ -22,7 +22,11 @@ class ScreenSetting extends Component {
             this.setState({
                 color:key
             })
-            console.log(key)
+            this.props.dispatch({
+                type : 'GET_COLOR',
+                data : key,
+                message : "asdf"
+            })
         }
     }
     render() {
